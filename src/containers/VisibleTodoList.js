@@ -8,6 +8,7 @@ const getVisibleTodos = (todos, filter) => {
             return todos
         case 'SHOW_IN_ACTIVE':
             return todos.filter(t => t.done)
+        default:
         case 'SHOW_ACTIVE':
             return todos.filter(t => !t.done)
     }

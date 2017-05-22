@@ -41,6 +41,6 @@ function ToDoForm({ dispatch }) {
     );
 }
 
-ToDoForm = connect()(ToDoForm)
+ToDoForm = connect()(ToDoForm);
 
 export default ToDoForm

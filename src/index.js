@@ -1,10 +1,7 @@
 import {createStore} from 'redux';
-import {Provider, connect} from 'react-redux'
+import {Provider} from 'react-redux'
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-//todo: must be removed
-import {toggle, remove, addToDo, filter} from './actions/actions';
 
 //components
 import VisibleTodoList from "./containers/VisibleTodoList"
@@ -22,12 +19,10 @@ import todo from "./reducers/reducers"
 
 let store = createStore(todo);
 
-store.dispatch(addToDo("sdfvdasvgfdsfvg"));
-
 ReactDOM.render(
     <Provider store={store}>
         <div>
-            <ToDoForm store={store}/>
+            <ToDoForm/>
             <VisibleTodoList/>
             <FilterActions />
         </div>

@@ -1,6 +1,5 @@
 import React from 'react';
-// actions todo: actions must be in another file
-import {toggle, remove, filterActive} from '../actions/actions';
+
 // design
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {List, ListItem} from 'material-ui/List';
@@ -15,7 +14,6 @@ const styles = {
     }
 };
 
-// todo: remove store
 function ToDoItem({id, text, done, onToggle, onTodoRemove}) {
     return (
         <MuiThemeProvider>
