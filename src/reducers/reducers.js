@@ -44,6 +44,7 @@ export default function todo(state = initialState, action) {
                         index = newArr.indexOf(todo);
                         newArr.splice(index, 1)
                     }
+                    return todo
                 });
 
                 return newArr

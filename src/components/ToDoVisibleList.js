@@ -15,15 +15,15 @@ function ToDoList({todos, emptyText, onTodoClick, onTodoRemove}) {
     return (
         <div>
             <MuiThemeProvider>
-                <Paper style={style}  zDepth={3} >
+                <Paper style={style} zDepth={3}>
                     { todos.length ? (
                         todos.map((todo) =>
                             <ToDoItem
                                 id={todo.id}
                                 text={todo.text}
                                 done={todo.done}
-                                onToggle = {() => onTodoClick(todo.id)}
-                                onTodoRemove = {() => onTodoRemove(todo.id)}
+                                onToggle={() => onTodoClick(todo.id)}
+                                onTodoRemove={() => onTodoRemove(todo.id)}
                             />)
                     ) : (
                         <MessageText text={emptyText}/>
