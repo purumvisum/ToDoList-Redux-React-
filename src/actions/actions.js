@@ -1,3 +1,5 @@
+import {v4} from 'node-uuid';
+
 /*
  * Actions
  */
@@ -8,7 +10,7 @@ export function addToDo(text) {
     return {
         type: "ADD_TODO",
         text: text,
-        id: index++
+        id: v4()
     }
 }
 

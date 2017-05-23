@@ -1,3 +1,4 @@
+import throttle  from 'lodash/throttle';
 import { createStore } from 'redux';
 
 import {Provider} from 'react-redux'
@@ -13,12 +14,36 @@ import ToDoForm from "./components/TodoTextField"
 //reducer
 import todo from "./reducers/reducers"
 
+// local storage
+import { loadState, saveState } from "./localst"
+
+// fake DB
+import { fetchTodos } from './api';
+
 
 /*
  * Store
  */
 
-const store = createStore(todo,   window.devToolsExtension ? window.devToolsExtension() : f => f);
+fetchTodos('all').then(todos =>
+    console.log(todos)
+)
+
+fetchTodos('active').then(todos =>
+    console.log(todos)
+)
+
+const persistedState = loadState()
+let store = createStore(
+    todo,
+    persistedState
+);
+
+store.subscribe(throttle(() => {
+    saveState({
+        todos: store.getState().todos
+    });
+}, 1000));
 
 ReactDOM.render(
     <Provider store={store}>
@@ -30,3 +55,4 @@ ReactDOM.render(
     </Provider>
     , document.getElementById('root')
 );
+
