@@ -17,21 +17,9 @@ import todo from "./reducers/reducers"
 // local storage
 import { loadState, saveState } from "./localst"
 
-// fake DB
-import { fetchTodos } from './api';
-
-
 /*
  * Store
  */
-
-fetchTodos('all').then(todos =>
-    console.log(todos)
-)
-
-fetchTodos('active').then(todos =>
-    console.log(todos)
-)
 
 const persistedState = loadState()
 let store = createStore(
