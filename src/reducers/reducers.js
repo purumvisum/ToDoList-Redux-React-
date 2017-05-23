@@ -55,6 +55,12 @@ export default function todo(state = initialState, action) {
 
             });
 
+        case "SHOW_ALL":
+            return Object.assign({}, state, {
+                filter: "SHOW_ALL",
+                emptyText: "Nothing to show"
+            });
+
         case "SHOW_ACTIVE":
             return Object.assign({}, state, {
                 filter: "SHOW_ACTIVE",
@@ -67,11 +73,6 @@ export default function todo(state = initialState, action) {
                 emptyText: "Nothing done"
             });
 
-        case "SHOW_ALL":
-            return Object.assign({}, state, {
-                filter: "SHOW_ALL",
-                emptyText: "Nothing to show"
-            });
 
         default:
             return state
