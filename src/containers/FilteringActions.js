@@ -6,19 +6,17 @@ const mapStateToProps = (state) => {
     return state
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        showActive: () => {
-            dispatch(filterActive())
-        },
-        showInActive: () => {
-            dispatch(filterInActive());
-        },
-        showAll: () => {
-            dispatch(filterAll());
-        }
+const mapDispatchToProps = (dispatch) => ({
+    showActive() {
+        dispatch(filterActive())
+    },
+    showInActive() {
+        dispatch(filterInActive());
+    },
+    showAll() {
+        dispatch(filterAll());
     }
-}
+})
 
 const FilterActions = connect(
     mapStateToProps,
