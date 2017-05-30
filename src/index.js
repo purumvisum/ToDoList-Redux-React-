@@ -1,5 +1,5 @@
-import throttle  from 'lodash/throttle';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
+import { persistStore, autoRehydrate } from 'redux-persist'
 
 import {Provider} from 'react-redux'
 import React from 'react';
@@ -14,24 +14,13 @@ import ToDoForm from "./components/TodoTextField"
 //reducer
 import todo from "./reducers/reducers"
 
-// local storage
-import { loadState, saveState } from "./localst"
 
 /*
  * Store
  */
 
-const persistedState = loadState()
-let store = createStore(
-    todo,
-    persistedState
-);
-
-store.subscribe(throttle(() => {
-    saveState({
-        todos: store.getState().todos
-    });
-}, 1000));
+const store = compose(autoRehydrate())(createStore)(todo)
+persistStore(store);
 
 ReactDOM.render(
     <Provider store={store}>

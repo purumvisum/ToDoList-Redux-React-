@@ -5,7 +5,7 @@
 const initialState = {
     todos: [],
     filter: 'SHOW_ALL',
-    emptyText: "Nothing to show :( "
+    emptyText: "Nothing to show :("
 };
 
 export default function todo(state = initialState, action) {
@@ -28,7 +28,6 @@ export default function todo(state = initialState, action) {
                 todos: state.todos.map((todo) => {
                     if (todo.id === action.id) {
                         todo.done = !todo.done;
-                        console.log(state)
                     }
                     return todo
                 })
@@ -72,7 +71,6 @@ export default function todo(state = initialState, action) {
                 filter: "SHOW_IN_ACTIVE",
                 emptyText: "Nothing done"
             });
-
 
         default:
             return state
